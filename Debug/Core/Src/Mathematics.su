@@ -1,0 +1,25 @@
+Mathematics.cpp:104:7:float powerf(float, int)	24	static
+Mathematics.cpp:111:9:int32_t applyDeadband(int32_t, int32_t)	16	static
+Mathematics.cpp:123:6:void devClear(stdev_t*)	16	static
+Mathematics.cpp:128:6:void devPush(stdev_t*, float)	24	static
+Mathematics.cpp:142:7:float devVariance(stdev_t*)	24	static
+Mathematics.cpp:147:7:float devStandardDeviation(stdev_t*)	16	static
+Mathematics.cpp:152:7:float degreesToRadians(int16_t)	16	static
+Mathematics.cpp:157:5:int scaleRange(int, int, int, int, int)	32	static
+Mathematics.cpp:164:6:void normalizeV(fp_vector*, fp_vector*)	32	static
+Mathematics.cpp:176:6:void buildRotationMatrix(fp_angles_t*, float (*)[3])	64	static
+Mathematics.cpp:205:6:void rotateV(fp_vector*, fp_angles_t*)	72	static
+Mathematics.cpp:227:9:int32_t quickMedianFilter3(int32_t*)	48	static
+Mathematics.cpp:236:9:int32_t quickMedianFilter5(int32_t*)	72	static
+Mathematics.cpp:247:9:int32_t quickMedianFilter7(int32_t*)	104	static
+Mathematics.cpp:260:9:int32_t quickMedianFilter9(int32_t*)	136	static
+Mathematics.cpp:275:7:float quickMedianFilter3f(float*)	48	static
+Mathematics.cpp:284:7:float quickMedianFilter5f(float*)	72	static
+Mathematics.cpp:295:7:float quickMedianFilter7f(float*)	104	static
+Mathematics.cpp:308:7:float quickMedianFilter9f(float*)	136	static
+Mathematics.cpp:323:6:void arraySubInt32(int32_t*, int32_t*, int32_t*, int)	32	static
+Mathematics.cpp:330:9:int16_t qPercent(fix12_t)	16	static
+Mathematics.cpp:334:9:int16_t qMultiply(fix12_t, int16_t)	16	static
+Mathematics.cpp:338:10:fix12_t qConstruct(int16_t, int16_t)	16	static
+Mathematics.cpp:342:10:uint16_t crc16_ccitt(uint16_t, unsigned char)	24	static
+Mathematics.cpp:355:9:uint8_t crc8_dvb_s2(uint8_t, unsigned char)	24	static

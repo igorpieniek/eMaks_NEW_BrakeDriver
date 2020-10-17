@@ -12,13 +12,9 @@
 
 #include "ModeManager.h"
 #include "futaba.h"
-#include "../../Can/CanSendManager.h"
+#include "CanSendManager.h"
 
-extern "C"{
-	#include "../../Actuator/brake_driver.h"
-	#include "../../Actuator/brakes.h"
-	#include "../../Actuator/latt.h"
-}
+
 
 
 #define SERVICE_MAX_VELOCITY 95.f

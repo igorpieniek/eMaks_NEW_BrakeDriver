@@ -1,0 +1,18 @@
+Filters.h:23:2:Filter::Filter()	16	static
+Filters.h:24:10:Filter::~Filter()	16	static
+Filters.h:24:10:virtual Filter::~Filter()	16	static
+Filters.h:91:10:NullFilter::~NullFilter()	16	static
+Filters.h:91:10:virtual NullFilter::~NullFilter()	16	static
+Filters.cpp:16:7:virtual float PT1Filter::apply(float)	24	static
+Filters.cpp:20:1:PT1Filter::PT1Filter(uint8_t, float)	32	static
+Filters.cpp:25:1:PT1Filter::~PT1Filter()	16	static
+Filters.cpp:25:1:virtual PT1Filter::~PT1Filter()	16	static
+Filters.cpp:29:7:virtual float BiquadFilter::apply(float)	32	static
+Filters.cpp:35:1:BiquadFilter::BiquadFilter(biquadFilterType_e, float, float, float)	64	static
+Filters.cpp:89:1:BiquadFilter::~BiquadFilter()	16	static
+Filters.cpp:89:1:virtual BiquadFilter::~BiquadFilter()	16	static
+Filters.cpp:92:7:virtual float KalmanFilter::apply(float)	24	static
+Filters.cpp:110:1:KalmanFilter::KalmanFilter(float, float, float, float)	24	static
+Filters.cpp:119:1:KalmanFilter::~KalmanFilter()	16	static
+Filters.cpp:119:1:virtual KalmanFilter::~KalmanFilter()	16	static
+Filters.cpp:122:7:virtual float NullFilter::apply(float)	16	static

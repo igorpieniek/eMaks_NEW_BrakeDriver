@@ -1,0 +1,19 @@
+Futaba.cpp:39:6:void Futaba::sbusDataReceive(uint8_t)	32	static
+Futaba.cpp:64:9:uint8_t Futaba::sbusFrameStatus()	16	static
+Futaba.cpp:80:9:uint8_t Futaba::sbusChannelsDecode()	16	static
+Futaba.cpp:123:10:uint16_t Futaba::sbusChannelsReadRawRC(uint8_t)	16	static
+Futaba.cpp:130:6:void Futaba::sbusChannelsInit()	24	static
+Futaba.cpp:149:6:void Futaba::Init()	16	static
+Futaba.cpp:155:10:uint16_t Futaba::Get_RCState()	16	static
+Futaba.cpp:158:6:void Futaba::Process()	16	static
+Futaba.cpp:192:6:void Futaba::ConfigureSmoothing(float, float)	48	static
+Futaba.cpp:197:6:void Futaba::ProcessSmoothing()	24	static
+Futaba.cpp:203:6:void Futaba::Conversions()	16	static
+Futaba.cpp:256:6:void Futaba::RCCommands()	16	static
+Futaba.cpp:310:6:void Futaba::RxCallback()	16	static
+Futaba.cpp:315:1:Futaba::Futaba()	16	static
+Futaba.cpp:320:1:Futaba::~Futaba()	16	static
+Futaba.cpp:320:1:virtual Futaba::~Futaba()	16	static
+cmath:103:5:typename __gnu_cxx::__enable_if<std::__is_integer<_Tp>::__value, double>::__type std::abs(_Tp) [with _Tp = long unsigned int]	24	static
+Futaba.cpp:322:1:void __static_initialization_and_destruction_0(int, int)	16	static
+Futaba.cpp:322:1:cpp)	8	static

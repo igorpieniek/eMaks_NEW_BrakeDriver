@@ -1,0 +1,9 @@
+Tools.cpp:13:9:uint8_t Tools::GetMicrosState()	16	static
+Tools.cpp:16:10:uint32_t Tools::GetMicros()	16	static
+Tools.cpp:19:9:int32_t Tools::CompareMicros(uint32_t, uint32_t)	24	static
+Tools.cpp:22:9:uint8_t Tools::Init()	16	static
+Tools.cpp:35:1:Tools::Tools()	16	static
+Tools.cpp:40:1:Tools::~Tools()	16	static
+Tools.cpp:40:1:virtual Tools::~Tools()	16	static
+Tools.cpp:42:1:void __static_initialization_and_destruction_0(int, int)	16	static
+Tools.cpp:42:1:cpp)	8	static

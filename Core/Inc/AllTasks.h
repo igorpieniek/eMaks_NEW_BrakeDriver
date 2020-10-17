@@ -14,11 +14,7 @@
 #include "futaba.h"
 #include "Tools.h"
 
-extern "C"{
-	#include "../../Actuator/brake_driver.h"
-	#include "../../Actuator/brakes.h"
-	#include "../../Actuator/latt.h"
-}
+
 
 class AllTasks {
 public:

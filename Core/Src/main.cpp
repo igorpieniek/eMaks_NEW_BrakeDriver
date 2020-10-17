@@ -102,8 +102,10 @@ int main(void)
 
   HAL_CAN_Start(&hcan);
   if (HAL_CAN_ActivateNotification(&hcan,CAN_IT_RX_FIFO0_MSG_PENDING) == HAL_OK){
-	  HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
+	  //HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
   }
+
+//  HAL_TIM_Base_Start_IT(&htim3);
 
   uint8_t data = 1;
   /* USER CODE END 2 */

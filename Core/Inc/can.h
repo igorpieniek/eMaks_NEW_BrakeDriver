@@ -30,16 +30,16 @@
 typedef struct{
 	CAN_TxHeaderTypeDef     header;
 	uint32_t 				mailbox;
-	uint8_t*				data;
+	uint8_t				    data[8];
 }hal_can_messageTx;
 
 typedef struct{
 	CAN_RxHeaderTypeDef     header;
 	uint32_t 				mailbox;
-	uint8_t			data[8];
+	uint8_t			        data[8];
 }hal_can_messageRx;
 
-extern void hal_can_filter_init(void);
+
 /* USER CODE END Includes */
 
 extern CAN_HandleTypeDef hcan;
@@ -51,7 +51,8 @@ extern CAN_HandleTypeDef hcan;
 void MX_CAN_Init(void);
 
 /* USER CODE BEGIN Prototypes */
-
+void hal_can_filter_init(void);
+void hal_can_send(uint8_t data);
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus

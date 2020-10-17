@@ -32,15 +32,15 @@ void MX_CAN_Init(void)
 {
 
   hcan.Instance = CAN1;
-  hcan.Init.Prescaler = 16;
+  hcan.Init.Prescaler = 5;
   hcan.Init.Mode = CAN_MODE_NORMAL;
   hcan.Init.SyncJumpWidth = CAN_SJW_1TQ;
-  hcan.Init.TimeSeg1 = CAN_BS1_1TQ;
-  hcan.Init.TimeSeg2 = CAN_BS2_1TQ;
+  hcan.Init.TimeSeg1 = CAN_BS1_6TQ;
+  hcan.Init.TimeSeg2 = CAN_BS2_2TQ;
   hcan.Init.TimeTriggeredMode = DISABLE;
   hcan.Init.AutoBusOff = DISABLE;
   hcan.Init.AutoWakeUp = DISABLE;
-  hcan.Init.AutoRetransmission = DISABLE;
+  hcan.Init.AutoRetransmission = ENABLE;
   hcan.Init.ReceiveFifoLocked = DISABLE;
   hcan.Init.TransmitFifoPriority = DISABLE;
   if (HAL_CAN_Init(&hcan) != HAL_OK)
@@ -119,28 +119,40 @@ void HAL_CAN_MspDeInit(CAN_HandleTypeDef* canHandle)
 
 /* USER CODE BEGIN 1 */
 void hal_can_filter_init(void){
-	hcan_filter.FilterFIFOAssignment = CAN_FILTER_FIFO0;
-	hcan_filter.FilterIdHigh = 0xFFFF;
-	hcan_filter.FilterIdLow = 0x0;
-	hcan_filter.FilterIdHigh = 0x24D;
-	hcan_filter.FilterIdLow = 0x0;
+//	hcan_filter.FilterFIFOAssignment = CAN_FILTER_FIFO0;
+//	hcan_filter.FilterIdHigh = 0xFFFF;
+//	hcan_filter.FilterIdLow = 0x0;
+//	hcan_filter.FilterIdHigh = 0x24D;
+//	hcan_filter.FilterIdLow = 0x0;
+//	hcan_filter.FilterScale = CAN_FILTERSCALE_32BIT;
+//	hcan_filter.FilterActivation = ENABLE;
+	hcan_filter.FilterBank = 0;
+	hcan_filter.FilterMode = CAN_FILTERMODE_IDMASK;
 	hcan_filter.FilterScale = CAN_FILTERSCALE_32BIT;
+	hcan_filter.FilterIdHigh = 0x0000;
+	hcan_filter.FilterIdLow = 0x0000;
+	hcan_filter.FilterMaskIdHigh = 0x0000;
+	hcan_filter.FilterMaskIdLow = 0x0000;
+	hcan_filter.FilterFIFOAssignment = CAN_RX_FIFO0;
 	hcan_filter.FilterActivation = ENABLE;
+	hcan_filter.SlaveStartFilterBank = 14;
 
 	HAL_CAN_ConfigFilter(&hcan,&hcan_filter);
 }
 
 
-void hal_can_send(uint16_t frame_id, uint8_t dlc, uint8_t* data){
+void hal_can_send(uint8_t data){
 	hal_can_messageTx  hal_message;
-	hal_message.data = data;
-	hal_message.header.DLC = dlc;
+	hal_message.data[0] = data;
+	hal_message.header.DLC = 1;
 	hal_message.header.RTR = CAN_RTR_DATA;
 	hal_message.header.IDE  = CAN_ID_STD;
-	hal_message.header.StdId = frame_id;
+	hal_message.header.StdId = 0x21E;
+	hal_message.header.ExtId = 0x01;
+	hal_message.header.TransmitGlobalTime = DISABLE;
 
 	HAL_CAN_AddTxMessage(&hcan, &(hal_message.header),hal_message.data,&(hal_message.mailbox));
-
+	HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
 }
 
 void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef* hcan ){
@@ -149,7 +161,7 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef* hcan ){
 			&hal_message.header,
 			hal_message.data );
 
-	HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
+
 	HAL_GPIO_TogglePin(LED2_GPIO_Port, LED2_Pin);
 //	if (frame_id == STATUS_FRAME_ID) convertStatusData_Rx( data); // function also update status in modemanager
 //	else if ( frame_id == VELOCITY_FRAME_ID ) 		setVelocity( data , RC );

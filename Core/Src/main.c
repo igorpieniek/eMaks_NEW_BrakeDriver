@@ -20,12 +20,8 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "adc.h"
 #include "can.h"
-#include "dma.h"
-#include "spi.h"
 #include "tim.h"
-#include "usart.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
@@ -61,7 +57,14 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+//void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
+//	if(GPIO_Pin == B1_Pin){
+//		static uint8_t data = 1;
+//		if (data>100) data=1;
+//		data++;
+//		hal_can_send(&data);
+//	}
+//}
 /* USER CODE END 0 */
 
 /**
@@ -92,23 +95,31 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_DMA_Init();
-  MX_ADC1_Init();
   MX_CAN_Init();
-  MX_SPI1_Init();
   MX_TIM3_Init();
-  MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
   hal_can_filter_init();
-  HAL_CAN_ActivateNotification(&hcan,CAN_IT_RX_FIFO0_MSG_PENDING);
+
   HAL_CAN_Start(&hcan);
-  HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
+  if (HAL_CAN_ActivateNotification(&hcan,CAN_IT_RX_FIFO0_MSG_PENDING) == HAL_OK){
+	  HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
+  }
+
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+//	 for(uint32_t i = 0; i <150000; i ++){
+//		 if (i ==0){
+//			 if(data>10) data =1;
+//			 hal_can_send(data);
+//			 data++;
+//		 }
+//	 }
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -124,7 +135,6 @@ void SystemClock_Config(void)
 {
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
-  RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
 
   /** Initializes the CPU, AHB and APB busses clocks 
   */
@@ -145,13 +155,7 @@ void SystemClock_Config(void)
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
 
-  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_1) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_ADC;
-  PeriphClkInit.AdcClockSelection = RCC_ADCPCLK2_DIV2;
-  if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
+  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_0) != HAL_OK)
   {
     Error_Handler();
   }

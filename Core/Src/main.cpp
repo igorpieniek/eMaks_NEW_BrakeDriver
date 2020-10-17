@@ -26,7 +26,8 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "Futaba.h"
+#include "AllTasks.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -57,14 +58,18 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-//void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
-//	if(GPIO_Pin == B1_Pin){
-//		static uint8_t data = 1;
-//		if (data>100) data=1;
-//		data++;
-//		hal_can_send(&data);
-//	}
-//}
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
+  if (htim->Instance == TIM3) {
+    allTasks.process();
+  }
+}
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+{
+	if (huart->Instance == USART2) //aparatura
+	{
+		futaba.RxCallback();
+	}
+}
 /* USER CODE END 0 */
 
 /**
@@ -105,7 +110,7 @@ int main(void)
 	  //HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
   }
 
-//  HAL_TIM_Base_Start_IT(&htim3);
+  HAL_TIM_Base_Start_IT(&htim3);
 
   uint8_t data = 1;
   /* USER CODE END 2 */

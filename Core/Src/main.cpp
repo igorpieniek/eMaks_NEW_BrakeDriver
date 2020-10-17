@@ -122,7 +122,7 @@ int main(void)
 	 for(uint32_t i = 0; i <150000; i ++){
 		 if (i ==0){
 			 if(data>10) data =1;
-			 hal_can_send(data);
+			 hal_can_send(data, 0x21E);
 			 data++;
 		 }
 	 }

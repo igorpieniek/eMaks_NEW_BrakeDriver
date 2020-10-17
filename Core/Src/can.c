@@ -141,18 +141,19 @@ void hal_can_filter_init(void){
 }
 
 
-void hal_can_send(uint8_t data){
+void hal_can_send(uint8_t data, uint32_t frame_id){
 	hal_can_messageTx  hal_message;
-	hal_message.data[0] = data;
-	hal_message.header.DLC = 1;
+	for(uint8_t i = 0; i<8; i++) hal_message.data[i]=i;
+	//hal_message.data[0] = data;
+	hal_message.header.DLC = 8;
 	hal_message.header.RTR = CAN_RTR_DATA;
 	hal_message.header.IDE  = CAN_ID_STD;
-	hal_message.header.StdId = 0x21E;
+	hal_message.header.StdId = frame_id;
 	hal_message.header.ExtId = 0x01;
 	hal_message.header.TransmitGlobalTime = DISABLE;
 
 	HAL_CAN_AddTxMessage(&hcan, &(hal_message.header),hal_message.data,&(hal_message.mailbox));
-	HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
+	//HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
 }
 
 void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef* hcan ){
@@ -162,7 +163,7 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef* hcan ){
 			hal_message.data );
 
 
-	HAL_GPIO_TogglePin(LED2_GPIO_Port, LED2_Pin);
+	//HAL_GPIO_TogglePin(LED2_GPIO_Port, LED2_Pin);
 //	if (frame_id == STATUS_FRAME_ID) convertStatusData_Rx( data); // function also update status in modemanager
 //	else if ( frame_id == VELOCITY_FRAME_ID ) 		setVelocity( data , RC );
 //	else if ( frame_id == I3_VELOCITY_FRAME_ID )	setVelocity( data ,I3  );

@@ -52,7 +52,7 @@ void MX_CAN_Init(void);
 
 /* USER CODE BEGIN Prototypes */
 void hal_can_filter_init(void);
-void hal_can_send(uint8_t data);
+void hal_can_send(uint8_t data, uint32_t frame_id);
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus

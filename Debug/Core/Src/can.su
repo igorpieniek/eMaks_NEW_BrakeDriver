@@ -3,4 +3,4 @@ can.c:53:6:HAL_CAN_MspInit	32	static
 can.c:93:6:HAL_CAN_MspDeInit	8	static
 can.c:121:6:hal_can_filter_init	0	static
 can.c:144:6:hal_can_send	48	static
-can.c:158:6:HAL_CAN_RxFifo0MsgPendingCallback	48	static
+can.c:159:6:HAL_CAN_RxFifo0MsgPendingCallback	48	static

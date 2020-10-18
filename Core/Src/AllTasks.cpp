@@ -21,6 +21,7 @@ void AllTasks::init(void){
 	futaba.Init();
 	mode_manager.init();
 	motor_manager.init();
+	canSendManager.init();
 
 }
 

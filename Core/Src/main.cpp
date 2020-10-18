@@ -111,6 +111,7 @@ int main(void)
   }
 
   HAL_TIM_Base_Start_IT(&htim3);
+  allTasks.init();
 
   uint8_t data = 1;
   /* USER CODE END 2 */
@@ -119,13 +120,13 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	 for(uint32_t i = 0; i <150000; i ++){
-		 if (i ==0){
-			 if(data>10) data =1;
-			 hal_can_send(data, 0x21E);
-			 data++;
-		 }
-	 }
+//	 for(uint32_t i = 0; i <150000; i ++){
+//		 if (i ==0){
+//			 if(data>10) data =1;
+//			 hal_can_send(data, 0x21E);
+//			 data++;
+//		 }
+//	 }
 
     /* USER CODE END WHILE */
 

@@ -27,8 +27,8 @@
 #define MAX_SENDVALUE 0xC800
 #define POSITIVE_SIGN 1
 #define NEGATIVE_SIGN 0
-#define STEERING_FRAME_LENGTH (uint8_t)(4)
-#define STATUS_FRAME_LENGTH (uint8_t)(4)
+#define STEERING_FRAME_LENGTH 4
+#define STATUS_FRAME_LENGTH 4
 
 class CanSendManager {
 private:
@@ -39,15 +39,22 @@ private:
 		VELOCITY,
 		STATUS
 	};
-	void sendMsg(SEND_MODE mode, uint8_t * msgData);
+
+	hal_can_messageTx canMsgTx;
+	void clearTxBuff();
+
+	void sendMsg(SEND_MODE mode);
 	uint8_t getSign(float value);
 	uint16_t convertFloatToUint16t(float value);
-	uint8_t * convertToFrame(uint8_t sign, uint16_t value);
-	uint8_t* encode_frame_big_endian(uint8_t* data , uint8_t data_length);
+	void convertToFrame(uint8_t sign, uint16_t value);
+	void encode_frame_big_endian( uint8_t data_length);
 	void process(float maxvalue, float value,SEND_MODE mode);
 
-public:
 
+
+public:
+	void hal_can_send(uint32_t frame_id, uint32_t dlc);
+	void init(void);
 	void setVelocity(float maxVel,float vel);
 	void setTurn(float maxAngle, float angle);
 	void setStatus(ModeManager::RC_MODE, ModeManager::DRIVE_MODE);

@@ -1,15 +1,18 @@
-CanSendManager.cpp:12:6:void CanSendManager::sendMsg(CanSendManager::SEND_MODE, uint8_t*)	24	static
-CanSendManager.cpp:27:9:uint8_t CanSendManager::getSign(float)	16	static
-CanSendManager.cpp:32:10:uint16_t CanSendManager::convertFloatToUint16t(float)	32	static
-CanSendManager.cpp:39:11:uint8_t* CanSendManager::convertToFrame(uint8_t, uint16_t)	24	static
-CanSendManager.cpp:52:10:uint8_t* CanSendManager::encode_frame_big_endian(uint8_t*, uint8_t)	32	static
-CanSendManager.cpp:63:6:void CanSendManager::process(float, float, CanSendManager::SEND_MODE)	32	static
-CanSendManager.cpp:72:6:void CanSendManager::setVelocity(float, float)	24	static
-CanSendManager.cpp:76:6:void CanSendManager::setTurn(float, float)	24	static
-CanSendManager.cpp:79:6:void CanSendManager::setStatus(ModeManager::RC_MODE, ModeManager::DRIVE_MODE)	32	static
-CanSendManager.cpp:99:1:CanSendManager::CanSendManager()	16	static
-CanSendManager.cpp:104:1:CanSendManager::~CanSendManager()	16	static
-CanSendManager.cpp:104:1:virtual CanSendManager::~CanSendManager()	16	static
+CanSendManager.cpp:12:6:void CanSendManager::init()	16	static
+CanSendManager.cpp:21:6:void CanSendManager::clearTxBuff()	24	static
+CanSendManager.cpp:24:6:void CanSendManager::sendMsg(CanSendManager::SEND_MODE)	16	static
+CanSendManager.cpp:40:9:uint8_t CanSendManager::getSign(float)	16	static
+CanSendManager.cpp:45:10:uint16_t CanSendManager::convertFloatToUint16t(float)	32	static
+CanSendManager.cpp:52:6:void CanSendManager::convertToFrame(uint8_t, uint16_t)	16	static
+CanSendManager.cpp:69:6:void CanSendManager::encode_frame_big_endian(uint8_t)	24	static
+CanSendManager.cpp:83:6:void CanSendManager::process(float, float, CanSendManager::SEND_MODE)	32	static
+CanSendManager.cpp:97:6:void CanSendManager::setVelocity(float, float)	24	static
+CanSendManager.cpp:101:6:void CanSendManager::setTurn(float, float)	24	static
+CanSendManager.cpp:104:6:void CanSendManager::setStatus(ModeManager::RC_MODE, ModeManager::DRIVE_MODE)	24	static
+CanSendManager.cpp:128:6:void CanSendManager::hal_can_send(uint32_t, uint32_t)	24	static
+CanSendManager.cpp:136:1:CanSendManager::CanSendManager()	16	static
+CanSendManager.cpp:141:1:CanSendManager::~CanSendManager()	16	static
+CanSendManager.cpp:141:1:virtual CanSendManager::~CanSendManager()	16	static
 cmath:438:5:typename __gnu_cxx::__promote_2<_Tp, _Up>::__type std::pow(_Tp, _Up) [with _Tp = int; _Up = int]	24	static
-CanSendManager.cpp:106:1:void __static_initialization_and_destruction_0(int, int)	16	static
-CanSendManager.cpp:106:1:cpp)	8	static
+CanSendManager.cpp:143:1:void __static_initialization_and_destruction_0(int, int)	16	static
+CanSendManager.cpp:143:1:cpp)	8	static

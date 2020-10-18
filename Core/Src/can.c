@@ -141,20 +141,20 @@ void hal_can_filter_init(void){
 }
 
 
-void hal_can_send(uint8_t data, uint32_t frame_id){
-	hal_can_messageTx  hal_message;
-	for(uint8_t i = 0; i<8; i++) hal_message.data[i]=i;
-	//hal_message.data[0] = data;
-	hal_message.header.DLC = 8;
-	hal_message.header.RTR = CAN_RTR_DATA;
-	hal_message.header.IDE  = CAN_ID_STD;
-	hal_message.header.StdId = frame_id;
-	hal_message.header.ExtId = 0x01;
-	hal_message.header.TransmitGlobalTime = DISABLE;
-
-	HAL_CAN_AddTxMessage(&hcan, &(hal_message.header),hal_message.data,&(hal_message.mailbox));
-	//HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
-}
+//void hal_can_send(uint8_t data, uint32_t frame_id){
+//	hal_can_messageTx  hal_message;
+//	for(uint8_t i = 0; i<8; i++) hal_message.data[i]=i;
+//	//hal_message.data[0] = data;
+//	hal_message.header.DLC = 8;
+//	hal_message.header.RTR = CAN_RTR_DATA;
+//	hal_message.header.IDE  = CAN_ID_STD;
+//	hal_message.header.StdId = frame_id;
+//	hal_message.header.ExtId = 0x01;
+//	hal_message.header.TransmitGlobalTime = DISABLE;
+//
+//	HAL_CAN_AddTxMessage(&hcan, &(hal_message.header),hal_message.data,&(hal_message.mailbox));
+//	//HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
+//}
 
 void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef* hcan ){
 	hal_can_messageRx  hal_message;

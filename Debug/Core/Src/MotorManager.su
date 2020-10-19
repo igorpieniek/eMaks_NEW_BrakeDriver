@@ -2,10 +2,10 @@ MotorManager.cpp:12:6:void MotorManager::init()	16	static
 MotorManager.cpp:18:6:void MotorManager::process()	16	static
 MotorManager.cpp:24:6:void MotorManager::DriveModeCheck()	16	static
 MotorManager.cpp:27:6:void MotorManager::RCModeCheck()	24	static
-MotorManager.cpp:62:6:void MotorManager::setMaxVelocity()	16	static
-MotorManager.cpp:82:7:float MotorManager::getMaxVelocity()	16	static
-MotorManager.cpp:85:1:MotorManager::MotorManager()	16	static
-MotorManager.cpp:90:1:MotorManager::~MotorManager()	16	static
-MotorManager.cpp:90:1:virtual MotorManager::~MotorManager()	16	static
-MotorManager.cpp:92:1:void __static_initialization_and_destruction_0(int, int)	16	static
-MotorManager.cpp:92:1:cpp)	8	static
+MotorManager.cpp:63:6:void MotorManager::setMaxVelocity()	16	static
+MotorManager.cpp:83:7:float MotorManager::getMaxVelocity()	16	static
+MotorManager.cpp:86:1:MotorManager::MotorManager()	16	static
+MotorManager.cpp:91:1:MotorManager::~MotorManager()	16	static
+MotorManager.cpp:91:1:virtual MotorManager::~MotorManager()	16	static
+MotorManager.cpp:93:1:void __static_initialization_and_destruction_0(int, int)	16	static
+MotorManager.cpp:93:1:cpp)	8	static

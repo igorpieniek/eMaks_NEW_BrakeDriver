@@ -47,7 +47,7 @@ uint16_t CanSendManager::convertFloatToUint16t(float value){
 	if( value > range){
 		return range;
 	}
-	return(uint16_t)(value * pow(2, 16) /range);
+	return(uint16_t)(value * 512);
 }
 void CanSendManager::convertToFrame(uint8_t sign, uint16_t value){
 	canMsgTx.data[0] = (uint8_t)(sign >> 8);
@@ -67,15 +67,16 @@ void CanSendManager::convertToFrame(uint8_t sign, uint16_t value){
 }
 
 void CanSendManager::encode_frame_big_endian(uint8_t data_length){
-	 uint8_t* encoded_data = (uint8_t*)calloc(data_length, sizeof(uint8_t));
+	 //uint8_t* encoded_data = (uint8_t*)calloc(data_length, sizeof(uint8_t));
+	 uint8_t* encoded_data = new uint8_t[data_length];
 	 if (encoded_data != NULL){
 		for( uint8_t i = 1 ; i <= data_length  ;i++){
 			encoded_data[i-1] = canMsgTx.data[data_length-i];
 		}
 		for( uint8_t i = 0 ; i < data_length  ;i++) canMsgTx.data[i] = encoded_data[i];
 	 }
-
-	 free(encoded_data);
+	 delete[] encoded_data;
+	 //free(encoded_data);
 
 }
 

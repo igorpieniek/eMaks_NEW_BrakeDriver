@@ -18,12 +18,12 @@ void CanSendManager::init(){
 	clearTxBuff();
 }
 
-void CanSendManager::clearTxBuff(){ for(uint8_t i = 0; i<8; i++) canMsgTx.data[i]=0;}
+void CanSendManager::clearTxBuff(){
+	for(uint8_t i = 0; i<8; i++) canMsgTx.data[i]=0;
+}
 
 
 void CanSendManager::sendMsg(SEND_MODE mode){
-
-
 	if (mode == TURN ){
 		hal_can_send( VELOCITY_FRAME_ID, STEERING_FRAME_LENGTH );
 	}
@@ -53,20 +53,11 @@ void CanSendManager::convertToFrame(uint8_t sign, uint16_t value){
 	canMsgTx.data[1] = (uint8_t) sign;
 	canMsgTx.data[2] = (uint8_t)(value >> 8 );
 	canMsgTx.data[3] = (uint8_t) value;
-//	uint8_t data_to_encode[]={
-//			(uint8_t)(sign >> 8),
-//			(uint8_t) sign,
-//			(uint8_t)(value >> 8 ),
-//			(uint8_t) value,
-//	};
 
 	encode_frame_big_endian(STEERING_FRAME_LENGTH);
-
-
 }
 
 void CanSendManager::encode_frame_big_endian(uint8_t data_length){
-	 //uint8_t* encoded_data = (uint8_t*)calloc(data_length, sizeof(uint8_t));
 	 uint8_t* encoded_data = new uint8_t[data_length];
 	 if (encoded_data != NULL){
 		for( uint8_t i = 1 ; i <= data_length  ;i++){
@@ -75,8 +66,6 @@ void CanSendManager::encode_frame_big_endian(uint8_t data_length){
 		for( uint8_t i = 0 ; i < data_length  ;i++) canMsgTx.data[i] = encoded_data[i];
 	 }
 	 delete[] encoded_data;
-	 //free(encoded_data);
-
 }
 
 
@@ -85,7 +74,6 @@ void CanSendManager::process(float maxvalue, float value,SEND_MODE mode){
 	if (sign == NEGATIVE_SIGN){ value *= -1; } //Change sign to positive after check
 	if (value > maxvalue) value = maxvalue;
 	uint16_t convertedData = convertFloatToUint16t(value);
-	//uint8_t * frameData = convertToFrame(sign, convertedData);
 	canMsgTx.data[0] = (uint8_t)(sign >> 8);
 	canMsgTx.data[1] = (uint8_t) sign;
 	canMsgTx.data[2] = (uint8_t)(convertedData >> 8 );
@@ -116,24 +104,17 @@ void CanSendManager::setStatus(ModeManager::RC_MODE RCmode, ModeManager::DRIVE_M
 	canMsgTx.data[1] = RCstatus;
 	canMsgTx.data[2] = 0;
 	canMsgTx.data[3] = driveStatus;
-//	uint8_t data_to_encode[]={
-//			(uint8_t) NULL,
-//			(uint8_t) RCstatus,
-//			(uint8_t) NULL,
-//			(uint8_t) driveStatus };
+
 	encode_frame_big_endian(STEERING_FRAME_LENGTH);
 	sendMsg(STATUS);
-
 }
 
 void CanSendManager::hal_can_send(uint32_t frame_id, uint32_t dlc){
-
-		canMsgTx.header.DLC = (uint32_t)dlc;
-		canMsgTx.header.StdId = (uint32_t)frame_id;
-		HAL_CAN_AddTxMessage(&hcan, &(canMsgTx.header),canMsgTx.data,&(canMsgTx.mailbox));
-
-
+	canMsgTx.header.DLC = (uint32_t)dlc;
+	canMsgTx.header.StdId = (uint32_t)frame_id;
+	HAL_CAN_AddTxMessage(&hcan, &(canMsgTx.header),canMsgTx.data,&(canMsgTx.mailbox));
 }
+
 CanSendManager::CanSendManager() {
 	// TODO Auto-generated constructor stub
 

@@ -6,7 +6,7 @@ Futaba.cpp:130:6:void Futaba::sbusChannelsInit()	24	static
 Futaba.cpp:149:6:void Futaba::Init()	16	static
 Futaba.cpp:155:10:uint16_t Futaba::Get_RCState()	16	static
 Futaba.cpp:158:6:void Futaba::Process()	16	static
-Futaba.cpp:192:6:void Futaba::ConfigureSmoothing(float, float)	48	static
+Futaba.cpp:192:6:void Futaba::ConfigureSmoothing(float, float)	24	static
 Futaba.cpp:197:6:void Futaba::ProcessSmoothing()	24	static
 Futaba.cpp:203:6:void Futaba::Conversions()	16	static
 Futaba.cpp:256:6:void Futaba::RCCommands()	16	static

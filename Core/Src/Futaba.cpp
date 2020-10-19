@@ -190,9 +190,9 @@ void Futaba::Process(void) {
 	}
 }
 void Futaba::ConfigureSmoothing(float cutoff, float _dt) {
-	for (uint8_t i = 0; i < 4; i++){
-		lpf[i] = new BiquadFilter(FILTER_LPF, _dt, cutoff);
-	}
+//	for (uint8_t i = 0; i < 4; i++){
+//		lpf[i] = new BiquadFilter(FILTER_LPF, _dt, cutoff);
+//	}
 }
 void Futaba::ProcessSmoothing(void) {
 	for (int i = 0; i < 4; i++){

@@ -28,6 +28,7 @@
 /* USER CODE BEGIN Includes */
 #include "Futaba.h"
 #include "AllTasks.h"
+#include "usart.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -61,15 +62,21 @@ void SystemClock_Config(void);
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
   if (htim->Instance == TIM3) {
     allTasks.process();
+
   }
 }
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
-	if (huart->Instance == USART2) //aparatura
-	{
-		futaba.RxCallback();
-	}
+	if (huart->Instance == USART2) futaba.RxCallback();
+
 }
+
+//void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart){
+//	if (huart->Instance == USART2) //aparatura
+//	{
+//		__HAL_UART_ENABLE_IT(&huart2, UART_IT_RXNE);
+//	}
+//}
 /* USER CODE END 0 */
 
 /**
@@ -113,7 +120,7 @@ int main(void)
   HAL_TIM_Base_Start_IT(&htim3);
   allTasks.init();
 
-  uint8_t data = 1;
+
   /* USER CODE END 2 */
 
   /* Infinite loop */

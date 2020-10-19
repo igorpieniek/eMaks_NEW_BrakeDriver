@@ -23,7 +23,7 @@
 #define SEMI_MAX_VELOCITY 80.f
 #define AUTONOMOUS_MAX_VELOCITY 80.f
 
-#define MAX_TURN_ANGLE 45.f
+#define MAX_TURN_ANGLE 100.f
 
 
 

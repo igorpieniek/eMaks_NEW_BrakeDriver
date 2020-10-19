@@ -43,11 +43,10 @@ uint8_t CanSendManager::getSign(float value){
 }
 
 uint16_t CanSendManager::convertFloatToUint16t(float value){
-	float range = 128;
-	if( value > range){
-		return range;
+	if( value > MAX_PERCANTAGE_VALUE){
+		return (uint16_t)MAX_SENDVALUE;
 	}
-	return(uint16_t)(value * 512);
+	return(uint16_t)((value * MAX_SENDVALUE)/MAX_PERCANTAGE_VALUE );
 }
 void CanSendManager::convertToFrame(uint8_t sign, uint16_t value){
 	canMsgTx.data[0] = (uint8_t)(sign >> 8);
@@ -84,6 +83,7 @@ void CanSendManager::encode_frame_big_endian(uint8_t data_length){
 void CanSendManager::process(float maxvalue, float value,SEND_MODE mode){
 	uint8_t sign = getSign(value) ;
 	if (sign == NEGATIVE_SIGN){ value *= -1; } //Change sign to positive after check
+	if (value > maxvalue) value = maxvalue;
 	uint16_t convertedData = convertFloatToUint16t(value);
 	//uint8_t * frameData = convertToFrame(sign, convertedData);
 	canMsgTx.data[0] = (uint8_t)(sign >> 8);

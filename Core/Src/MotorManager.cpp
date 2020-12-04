@@ -41,8 +41,8 @@ void MotorManager::RCModeCheck(){
 			HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_RESET);
 			HAL_GPIO_WritePin(LED2_GPIO_Port, LED2_Pin, GPIO_PIN_SET);
 			canSendManager.setStatus(ModeManager::MODE_ACRO, driveMode);
-			canSendManager.setVelocity(getMaxVelocity(), 100.f * futaba.SmoothDeflection[YAW]);
-			canSendManager.setTurn(MAX_TURN_ANGLE ,      100.f * futaba.SmoothDeflection[PITCH] ) ;
+			canSendManager.setVelocity(getMaxVelocity(), 100.f * futaba.SmoothDeflection[PITCH]);
+			canSendManager.setTurn(MAX_TURN_ANGLE ,      100.f * futaba.SmoothDeflection[YAW] ) ;
 			break;
 		case ModeManager::MODE_SEMI:
 //			control_brakes(getMaxVelocity() * futaba.SmoothDeflection[PITCH]);
@@ -50,7 +50,7 @@ void MotorManager::RCModeCheck(){
 			HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_SET);
 			HAL_GPIO_WritePin(LED2_GPIO_Port, LED2_Pin, GPIO_PIN_RESET);
 			canSendManager.setStatus(ModeManager::MODE_SEMI, driveMode);
-			canSendManager.setVelocity(getMaxVelocity(), 100.f * futaba.SmoothDeflection[YAW]);
+			canSendManager.setVelocity(getMaxVelocity(), 100.f * futaba.SmoothDeflection[PITCH]);
 
 			break;
 		case ModeManager::MODE_AUTONOMOUS:

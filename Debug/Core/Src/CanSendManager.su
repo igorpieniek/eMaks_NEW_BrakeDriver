@@ -1,17 +1,17 @@
-CanSendManager.cpp:12:6:void CanSendManager::init()	16	static
-CanSendManager.cpp:21:6:void CanSendManager::clearTxBuff()	24	static
-CanSendManager.cpp:24:6:void CanSendManager::sendMsg(CanSendManager::SEND_MODE)	16	static
-CanSendManager.cpp:40:9:uint8_t CanSendManager::getSign(float)	16	static
-CanSendManager.cpp:45:10:uint16_t CanSendManager::convertFloatToUint16t(float)	24	static
+CanSendManager.cpp:13:6:void CanSendManager::init()	16	static
+CanSendManager.cpp:22:6:void CanSendManager::clearTxBuff()	24	static
+CanSendManager.cpp:27:6:void CanSendManager::sendMsg(CanSendManager::SEND_MODE)	16	static
+CanSendManager.cpp:41:9:uint8_t CanSendManager::getSign(float)	16	static
+CanSendManager.cpp:46:10:uint16_t CanSendManager::convertFloatToUint16t(float)	16	static
 CanSendManager.cpp:52:6:void CanSendManager::convertToFrame(uint8_t, uint16_t)	16	static
-CanSendManager.cpp:69:6:void CanSendManager::encode_frame_big_endian(uint8_t)	24	static
-CanSendManager.cpp:84:6:void CanSendManager::process(float, float, CanSendManager::SEND_MODE)	32	static
-CanSendManager.cpp:98:6:void CanSendManager::setVelocity(float, float)	24	static
-CanSendManager.cpp:102:6:void CanSendManager::setTurn(float, float)	24	static
-CanSendManager.cpp:105:6:void CanSendManager::setStatus(ModeManager::RC_MODE, ModeManager::DRIVE_MODE)	24	static
-CanSendManager.cpp:129:6:void CanSendManager::hal_can_send(uint32_t, uint32_t)	24	static
-CanSendManager.cpp:137:1:CanSendManager::CanSendManager()	16	static
-CanSendManager.cpp:142:1:CanSendManager::~CanSendManager()	16	static
-CanSendManager.cpp:142:1:virtual CanSendManager::~CanSendManager()	16	static
-CanSendManager.cpp:144:1:void __static_initialization_and_destruction_0(int, int)	16	static
-CanSendManager.cpp:144:1:cpp)	8	static
+CanSendManager.cpp:61:6:void CanSendManager::encode_frame_big_endian(uint8_t)	24	static
+CanSendManager.cpp:73:6:void CanSendManager::process(float, float, CanSendManager::SEND_MODE)	32	static
+CanSendManager.cpp:90:6:void CanSendManager::setVelocity(float, float)	24	static
+CanSendManager.cpp:94:6:void CanSendManager::setTurn(float, float)	24	static
+CanSendManager.cpp:97:6:void CanSendManager::setStatus(ModeManager::RC_MODE, ModeManager::DRIVE_MODE)	24	static
+CanSendManager.cpp:116:6:void CanSendManager::hal_can_send(uint32_t, uint32_t)	24	static
+CanSendManager.cpp:122:1:CanSendManager::CanSendManager()	16	static
+CanSendManager.cpp:127:1:CanSendManager::~CanSendManager()	16	static
+CanSendManager.cpp:127:1:virtual CanSendManager::~CanSendManager()	16	static
+CanSendManager.cpp:129:1:void __static_initialization_and_destruction_0(int, int)	16	static
+CanSendManager.cpp:129:1:cpp)	8	static

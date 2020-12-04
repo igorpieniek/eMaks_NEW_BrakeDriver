@@ -16,6 +16,9 @@
 #define TURN_FRAME_ID  		0x24D  // SHOULD BE 0x24D
 #define STATUS_FRAME_ID  	0x25D
 
+#define STEERING_VELOCITY_FRAME_ID  0x21D //old x axis
+#define STEERING_TURN_FRAME_ID   	0x22D // old y axis
+
 #define JOYSTICK_MODE_MSG 	0x00
 #define ACRO_MODE_MSG		0x01
 #define SEMI_MODE_MSG		0x02
@@ -30,6 +33,8 @@
 #define NEGATIVE_SIGN 0
 #define STEERING_FRAME_LENGTH 4
 #define STATUS_FRAME_LENGTH 4
+
+
 
 class CanSendManager {
 private:
@@ -59,6 +64,7 @@ public:
 	void setVelocity(float maxVel,float vel);
 	void setTurn(float maxAngle, float angle);
 	void setStatus(ModeManager::RC_MODE, ModeManager::DRIVE_MODE);
+
 
 	CanSendManager();
 	virtual ~CanSendManager();

@@ -8,7 +8,8 @@
 #include "CanSendManager.h"
 
 CanSendManager canSendManager;
-
+uint8_t rxwatch[8];
+uint16_t converted_data;
 void CanSendManager::init(){
 
 	canMsgTx.header.RTR = CAN_RTR_DATA;
@@ -74,10 +75,13 @@ void CanSendManager::process(float maxvalue, float value,SEND_MODE mode){
 	if (sign == NEGATIVE_SIGN){ value *= -1; } //Change sign to positive after check
 	if (value > maxvalue) value = maxvalue;
 	uint16_t convertedData = convertFloatToUint16t(value);
+
+
 	canMsgTx.data[0] = (uint8_t)(sign >> 8);
 	canMsgTx.data[1] = (uint8_t) sign;
 	canMsgTx.data[2] = (uint8_t)(convertedData >> 8 );
 	canMsgTx.data[3] = (uint8_t) (convertedData);
+
 
 	encode_frame_big_endian(STEERING_FRAME_LENGTH);
 	sendMsg(mode);

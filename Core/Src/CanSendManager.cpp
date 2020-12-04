@@ -26,10 +26,10 @@ void CanSendManager::clearTxBuff(){
 
 void CanSendManager::sendMsg(SEND_MODE mode){
 	if (mode == TURN ){
-		hal_can_send( VELOCITY_FRAME_ID, STEERING_FRAME_LENGTH );
+		hal_can_send( TURN_FRAME_ID, STEERING_FRAME_LENGTH );
 	}
 	else if (mode == VELOCITY) {
-		hal_can_send( TURN_FRAME_ID,  STEERING_FRAME_LENGTH);
+		hal_can_send( VELOCITY_FRAME_ID,  STEERING_FRAME_LENGTH);
 	}
 	else if (mode == STATUS ){
 		hal_can_send( STATUS_FRAME_ID,  STATUS_FRAME_LENGTH);

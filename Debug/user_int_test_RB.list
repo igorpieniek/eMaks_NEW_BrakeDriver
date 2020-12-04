@@ -25,23 +25,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  10 .ARM.attributes 00000029  00000000  00000000  00020080  2**0
                   CONTENTS, READONLY
- 11 .debug_info   000178ac  00000000  00000000  000200a9  2**0
+ 11 .debug_info   000177bc  00000000  00000000  000200a9  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_abbrev 000040be  00000000  00000000  00037955  2**0
+ 12 .debug_abbrev 000040be  00000000  00000000  00037865  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_aranges 00000e40  00000000  00000000  0003ba18  2**3
+ 13 .debug_aranges 00000e40  00000000  00000000  0003b928  2**3
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_ranges 00001058  00000000  00000000  0003c858  2**3
+ 14 .debug_ranges 00001058  00000000  00000000  0003c768  2**3
                   CONTENTS, READONLY, DEBUGGING
- 15 .debug_line   00008980  00000000  00000000  0003d8b0  2**0
+ 15 .debug_line   00008980  00000000  00000000  0003d7c0  2**0
                   CONTENTS, READONLY, DEBUGGING
- 16 .debug_str    000058ef  00000000  00000000  00046230  2**0
+ 16 .debug_str    0000587c  00000000  00000000  00046140  2**0
                   CONTENTS, READONLY, DEBUGGING
- 17 .comment      0000007c  00000000  00000000  0004bb1f  2**0
+ 17 .comment      0000007c  00000000  00000000  0004b9bc  2**0
                   CONTENTS, READONLY
- 18 .debug_frame  000035bc  00000000  00000000  0004bb9c  2**2
+ 18 .debug_frame  000035bc  00000000  00000000  0004ba38  2**2
                   CONTENTS, READONLY, DEBUGGING
- 19 .debug_loc    00007f6f  00000000  00000000  0004f158  2**0
+ 19 .debug_loc    00007f6f  00000000  00000000  0004eff4  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -3210,9 +3210,9 @@ void CanSendManager::sendMsg(SEND_MODE mode){
  800205e:	78fb      	ldrb	r3, [r7, #3]
  8002060:	2b00      	cmp	r3, #0
  8002062:	d106      	bne.n	8002072 <_ZN14CanSendManager7sendMsgENS_9SEND_MODEE+0x20>
-		hal_can_send( VELOCITY_FRAME_ID, STEERING_FRAME_LENGTH );
+		hal_can_send( TURN_FRAME_ID, STEERING_FRAME_LENGTH );
  8002064:	2204      	movs	r2, #4
- 8002066:	f240 213e 	movw	r1, #574	; 0x23e
+ 8002066:	f240 214d 	movw	r1, #589	; 0x24d
  800206a:	6878      	ldr	r0, [r7, #4]
  800206c:	f000 f944 	bl	80022f8 <_ZN14CanSendManager12hal_can_sendEmm>
  8002070:	e012      	b.n	8002098 <_ZN14CanSendManager7sendMsgENS_9SEND_MODEE+0x46>
@@ -3221,9 +3221,9 @@ void CanSendManager::sendMsg(SEND_MODE mode){
  8002072:	78fb      	ldrb	r3, [r7, #3]
  8002074:	2b01      	cmp	r3, #1
  8002076:	d106      	bne.n	8002086 <_ZN14CanSendManager7sendMsgENS_9SEND_MODEE+0x34>
-		hal_can_send( TURN_FRAME_ID,  STEERING_FRAME_LENGTH);
+		hal_can_send( VELOCITY_FRAME_ID,  STEERING_FRAME_LENGTH);
  8002078:	2204      	movs	r2, #4
- 800207a:	f240 214d 	movw	r1, #589	; 0x24d
+ 800207a:	f240 213e 	movw	r1, #574	; 0x23e
  800207e:	6878      	ldr	r0, [r7, #4]
  8002080:	f000 f93a 	bl	80022f8 <_ZN14CanSendManager12hal_can_sendEmm>
  8002084:	e008      	b.n	8002098 <_ZN14CanSendManager7sendMsgENS_9SEND_MODEE+0x46>

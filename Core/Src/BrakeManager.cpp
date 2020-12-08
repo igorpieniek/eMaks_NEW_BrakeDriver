@@ -23,12 +23,11 @@ void BrakeManager::update_piston_state(){
 	min_flag = getState(LOW);
 	max_flag = getState(HIGH);
 
-	if 		(min_flag == SET && max_flag == RESET) brake_state = ZERO;
-	else if	(min_flag == RESET && max_flag == SET) brake_state = MAX;
-	else if 	(min_flag == RESET && max_flag == RESET){
-		off(); // back to ZERO state
+
+	if 	(min_flag == RESET && max_flag == RESET){
+		move(DOWN); // back to ZERO state
 	}
-	else stop(); //something wrong
+
 
 
 }

@@ -28,11 +28,19 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
 }
 
 void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef* hcan ){
-	hal_can_messageRx  hal_message;
+	hal_can_messageRx  rx;
 	HAL_CAN_GetRxMessage(hcan,CAN_RX_FIFO0,
-			&hal_message.header,
-			hal_message.data );
+			&rx.header,
+			rx.data );
 
-	//canSendManager.getFrame(&hal_message);
+	if( rx.header.StdId == 0x19D){
+		uint8_t sum = 0;
+		for(uint8_t i =0; i < 4; i++){
+			sum += rx.data[i];
+		}
+		if(sum > 0 ) brake_manager.on();
+		else		 brake_manager.off();
+
+	}
 
 }

@@ -58,6 +58,16 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define LIMIT_SWITCH_LOW_Pin GPIO_PIN_2
+#define LIMIT_SWITCH_LOW_GPIO_Port GPIOC
+#define LIMIT_SWITCH_LOW_EXTI_IRQn EXTI2_IRQn
+#define LIMIT_SWITCH_HIGH_Pin GPIO_PIN_3
+#define LIMIT_SWITCH_HIGH_GPIO_Port GPIOC
+#define LIMIT_SWITCH_HIGH_EXTI_IRQn EXTI3_IRQn
+#define ENABLE_Pin GPIO_PIN_7
+#define ENABLE_GPIO_Port GPIOC
+#define DIRECTION_Pin GPIO_PIN_8
+#define DIRECTION_GPIO_Port GPIOC
 #define CAN_RX_Pin GPIO_PIN_11
 #define CAN_RX_GPIO_Port GPIOA
 #define CAN_TX_Pin GPIO_PIN_12

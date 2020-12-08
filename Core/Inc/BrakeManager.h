@@ -16,6 +16,9 @@
 #define ENABLE_STATE 	GPIO_PIN_SET
 #define DISABLE_STATE 	GPIO_PIN_RESET
 
+#define IS_REVERSED_STATE 0 /** 0 - switch pin SET state mean flag was set
+ 	 	 	 	 	 	 	 	1 - switch pin SET state mean flag was reset*/
+
 class BrakeManager {
 public:
 
@@ -35,7 +38,7 @@ public:
 	virtual ~BrakeManager();
 
 private:
-	enum Direction{ UP, DOWN};
+	enum Direction{ DOWN, UP};
 	enum Enable_state{DISABLE, ENABLE};
 
 

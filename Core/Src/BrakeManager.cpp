@@ -11,14 +11,14 @@ BrakeManager brake_manager;
 
 
 BrakeManager::BrakeManager() {
-	direction=UP;
+	direction=DOWN;
 	en = DISABLE;
-	//update current brake state - initial position of piston
+	//update limit switches state
 	update_piston_state();
 
-	if 	(min_flag == RESET && max_flag == RESET){
-		move(DOWN); // back to ZERO state
-	}
+//	if 	(min_flag == RESET && max_flag == RESET){ //IDEA
+//		move(DOWN); // back to ZERO state
+//	}
 
 }
 
@@ -29,23 +29,19 @@ BrakeManager::~BrakeManager() {
 
 void BrakeManager::on(){
 	update_piston_state();
-	if(max_flag == RESET){
-		move(UP);
-	}
-
+	if(max_flag == RESET) move(UP);
+	else stop();
 }
 
 void BrakeManager::off(){
 	update_piston_state();
-	if(min_flag == RESET){
-		move(DOWN);
-	}
+	if(min_flag == RESET) move(DOWN);
+	else stop();
 }
 
 void BrakeManager::interrupt_update(){
 	update_piston_state();
 	if (min_flag == SET || max_flag == SET) stop();
-
 }
 
 void BrakeManager::move(Direction dir){
@@ -84,8 +80,12 @@ BrakeManager::Limit_switch_flag BrakeManager::getState(Limit_switch sw){
 	else if(sw == HIGH){
 		state = HAL_GPIO_ReadPin(LIMIT_SWITCH_HIGH_GPIO_Port, LIMIT_SWITCH_HIGH_Pin);
 	}
-
-	if(state == GPIO_PIN_RESET) return RESET;
-	else						return SET;
+	if(!IS_REVERSED_STATE){
+		if(state == GPIO_PIN_RESET) return RESET; //TO REVERSE IF NEEDED
+		else						return SET;
+	}else{
+		if(state == GPIO_PIN_RESET) return SET; //TO REVERSE IF NEEDED
+		else						return RESET;
+	}
 
 }

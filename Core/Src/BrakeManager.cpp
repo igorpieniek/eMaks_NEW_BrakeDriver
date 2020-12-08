@@ -8,9 +8,10 @@
 #include <BrakeManager.h>
 
 BrakeManager::BrakeManager() {
+	direction=UP;
+	en = DISABLE;
 	//update current brake state - initial position of piston
 	update_piston_state();
-	//zeroing pins
 
 }
 
@@ -32,8 +33,32 @@ void BrakeManager::update_piston_state(){
 
 }
 
-void BrakeManager::stop(){
+void BrakeManager::on(){
+	update_piston_state();
+	if(max_flag == RESET){
+		move(UP);
+	}
 
+}
+
+void BrakeManager::off(){
+	update_piston_state();
+	if(min_flag == RESET){
+		move(DOWN);
+	}
+
+}
+
+void BrakeManager::move(Direction dir){
+	if (dir == UP){
+		direction = UP;
+	}
+
+
+}
+void BrakeManager::stop(){
+	HAL_GPIO_WritePin(ENABLE_GPIO_Port, ENABLE_Pin, GPIO_PIN_RESET );
+	en = ENABLE ;
 
 }
 

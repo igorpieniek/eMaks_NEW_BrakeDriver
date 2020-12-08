@@ -37,13 +37,17 @@ public:
 
 private:
 	enum Direction{ UP, DOWN};
-	enum Enable{OFF, ON};
+	enum Enable_state{DISABLE, ENABLE};
 
 	Limit_switch_flag min_flag;
 	Limit_switch_flag max_flag;
 	Brake_state brake_state;
 
+	Enable_state en;
+	Direction direction;
+
 	void stop();
+	void move( Direction dir);
 	Limit_switch_flag getState(Limit_switch);
 	void update_piston_state();
 

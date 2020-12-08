@@ -94,14 +94,7 @@ int main(void)
   MX_CAN_Init();
   MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
-  hal_can_filter_init();
 
-  HAL_CAN_Start(&hcan);
-  if (HAL_CAN_ActivateNotification(&hcan,CAN_IT_RX_FIFO0_MSG_PENDING) == HAL_OK){
-	  //HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
-  }
-
-  HAL_TIM_Base_Start_IT(&htim3);
   allTasks.init();
 
 
@@ -111,13 +104,6 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-//	 for(uint32_t i = 0; i <150000; i ++){
-//		 if (i ==0){
-//			 if(data>10) data =1;
-//			 hal_can_send(data, 0x21E);
-//			 data++;
-//		 }
-//	 }
 
     /* USER CODE END WHILE */
 

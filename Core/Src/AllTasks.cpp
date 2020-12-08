@@ -16,17 +16,26 @@ AllTasks::AllTasks() {
 }
 
 void AllTasks::init(void){
-//	init_latt_driver();
-	tools.Init();
-	futaba.Init();
-	mode_manager.init();
-	motor_manager.init();
-	canSendManager.init();
+	  hal_can_filter_init();
+
+	  HAL_CAN_Start(&hcan);
+	  if (HAL_CAN_ActivateNotification(&hcan,CAN_IT_RX_FIFO0_MSG_PENDING) == HAL_OK){
+		  //HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
+	  }
+
+	  HAL_TIM_Base_Start_IT(&htim3);
+
+	  tools.Init();
+	  futaba.Init();
+	  mode_manager.init();
+	  motor_manager.init();
+	  canSendManager.init();
 
 }
 
 void AllTasks::process(void){
-	//futaba.Process();
+
+
 	mode_manager.proccess();
 	motor_manager.process();
 

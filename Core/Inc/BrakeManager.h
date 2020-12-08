@@ -10,6 +10,11 @@
 
 #include "main.h"
 
+#define DIR_UP_STATE 	GPIO_PIN_SET
+#define DIR_DOWN_STATE 	GPIO_PIN_RESET
+
+#define ENABLE_STATE 	GPIO_PIN_SET
+#define DISABLE_STATE 	GPIO_PIN_RESET
 
 class BrakeManager {
 public:
@@ -20,12 +25,6 @@ public:
 	};
 	enum  Limit_switch{LOW,HIGH};
 
-	enum  Brake_state{
-		ZERO, 		/**< piston in minimum position*/
-		RELEASING, 	/**< piston is returning - releasing brake, temporary state*/
-		BRAKING,	/**< piston is moving - braking process, temporary state */
-		MAX			/**< piston in maximum position - full braking power */
-	};
 
 	void on();
 	void off();
@@ -39,15 +38,16 @@ private:
 	enum Direction{ UP, DOWN};
 	enum Enable_state{DISABLE, ENABLE};
 
+
 	Limit_switch_flag min_flag;
 	Limit_switch_flag max_flag;
-	Brake_state brake_state;
 
 	Enable_state en;
 	Direction direction;
 
 	void stop();
 	void move( Direction dir);
+	void writePins(GPIO_PinState dir, GPIO_PinState enable );
 	Limit_switch_flag getState(Limit_switch);
 	void update_piston_state();
 

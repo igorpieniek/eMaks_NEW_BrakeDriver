@@ -28,7 +28,7 @@ public:
 
 	void on();
 	void off();
-	void interrupt_update(Limit_switch sw); /**< update function to be called by EXTI interrupt*/
+	void interrupt_update(); /**< update function to be called by EXTI interrupt*/
 
 
 	BrakeManager();
@@ -53,4 +53,5 @@ private:
 
 };
 
+extern BrakeManager brake_manager;
 #endif /* INC_BRAKEMANAGER_H_ */

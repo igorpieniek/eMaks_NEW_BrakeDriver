@@ -3,6 +3,7 @@
 #include "AllTasks.h"
 #include "Futaba.h"
 #include "gpio.h"
+#include "BrakeManager.h"
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
   if (htim->Instance == TIM3) {
@@ -18,12 +19,9 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
-	if(GPIO_Pin == LIMIT_SWITCH_LOW_Pin){
-		//TODO
+	if(GPIO_Pin == LIMIT_SWITCH_LOW_Pin ||
+	   GPIO_Pin == LIMIT_SWITCH_HIGH_Pin	){
+		brake_manager.interrupt_update();
 	}
-	if(GPIO_Pin == LIMIT_SWITCH_HIGH_Pin){
-		//TODO
-	}
-
 
 }

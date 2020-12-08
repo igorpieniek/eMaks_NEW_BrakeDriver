@@ -7,6 +7,9 @@
 
 #include <BrakeManager.h>
 
+BrakeManager brake_manager;
+
+
 BrakeManager::BrakeManager() {
 	direction=UP;
 	en = DISABLE;
@@ -39,7 +42,7 @@ void BrakeManager::off(){
 	}
 }
 
-void BrakeManager::interrupt_update(Limit_switch sw){
+void BrakeManager::interrupt_update(){
 	update_piston_state();
 	if (min_flag == SET || max_flag == SET) stop();
 
@@ -60,7 +63,6 @@ void BrakeManager::move(Direction dir){
 void BrakeManager::stop(){
 	writePins(DIR_UP_STATE, DISABLE_STATE);
 	en = DISABLE ;
-
 }
 
 void BrakeManager::writePins(GPIO_PinState dir, GPIO_PinState enable ){
@@ -85,7 +87,5 @@ BrakeManager::Limit_switch_flag BrakeManager::getState(Limit_switch sw){
 
 	if(state == GPIO_PIN_RESET) return RESET;
 	else						return SET;
-
-
 
 }

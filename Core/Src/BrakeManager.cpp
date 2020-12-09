@@ -44,9 +44,10 @@ void BrakeManager::init(){
 	//update limit switches state
 	update_piston_state();
 
-//	if 	(min_flag == RESET && max_flag == RESET){ //IDEA
-//		move(DOWN); // back to ZERO state
-//	}
+	//Set to the initial position - min
+	if 	(min_flag == RESET && max_flag == RESET){
+		move(DOWN); // back to ZERO state
+	}
 }
 
 void BrakeManager::on(){

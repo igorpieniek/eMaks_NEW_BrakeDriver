@@ -9,6 +9,22 @@
 
 BrakeManager brake_manager;
 
+uint8_t BrakeManager::isErrorFrameIs(uint32_t frame){
+
+}
+uint8_t BrakeManager::isBrakeFrameId(uint32_t frame){
+
+}
+uint8_t BrakeManager::getFrameStatus(uint8_t* data){
+
+}
+
+
+
+
+
+
+
 
 BrakeManager::BrakeManager() {
 	direction=DOWN;

@@ -19,8 +19,16 @@
 #define IS_REVERSED_STATE 0 /** 0 - switch pin SET state mean flag was set
  	 	 	 	 	 	 	 	1 - switch pin SET state mean flag was reset*/
 
+#define BRAKE_FRAME_ID 0x19D
+
+
+
 class BrakeManager {
 public:
+
+	uint8_t isErrorFrameIs(uint32_t frame);
+	uint8_t isBrakeFrameId(uint32_t frame);
+	uint8_t getFrameStatus(uint8_t* data);
 
 	enum  Limit_switch_flag{
 		RESET ,   /**< flag down - normal state*/

@@ -10,17 +10,21 @@
 BrakeManager brake_manager;
 
 uint8_t BrakeManager::isErrorFrameIs(uint32_t frame){
-
+	uint32_t check_val = frame & 0xf ; //getting last 4 bits of frameID
+	if(check_val == 0xe) return 1;
+	else return 0;
 }
 uint8_t BrakeManager::isBrakeFrameId(uint32_t frame){
-
+	if (frame == BRAKE_FRAME_ID) return 1;
+	else return 0;
 }
 uint8_t BrakeManager::getFrameStatus(uint8_t* data){
+	uint8_t sum =0;
+	for(uint8_t i =0; i < 4; i++){sum += data[i];}
 
+	if (sum == 1) return 1;
+	else		  return 0;
 }
-
-
-
 
 
 

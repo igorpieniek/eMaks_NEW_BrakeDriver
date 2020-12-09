@@ -26,7 +26,7 @@
 class BrakeManager {
 public:
 
-	uint8_t isErrorFrameIs(uint32_t frame);
+	uint8_t isErrorFrameId(uint32_t frame);
 	uint8_t isBrakeFrameId(uint32_t frame);
 	uint8_t getFrameStatus(uint8_t* data);
 

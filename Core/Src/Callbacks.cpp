@@ -33,14 +33,15 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef* hcan ){
 			&rx.header,
 			rx.data );
 
-	if( rx.header.StdId == 0x19D){
-		uint8_t sum = 0;
-		for(uint8_t i =0; i < 4; i++){
-			sum += rx.data[i];
+	if(BrakeManager::isBrakeFrameId(rx.header.StdId) ||
+	   BrakeManager::isErrorFrameId(rx.header.StdId)) {
+
+		if (BrakeManager::getFrameStatus(&rx.data)){
+			brake_manager.on();
 		}
-		if(sum > 0 ) brake_manager.on();
-		else		 brake_manager.off();
+		else brake_manager.off();
 
 	}
+
 
 }

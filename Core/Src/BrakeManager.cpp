@@ -9,7 +9,7 @@
 
 BrakeManager brake_manager;
 
-uint8_t BrakeManager::isErrorFrameIs(uint32_t frame){
+uint8_t BrakeManager::isErrorFrameId(uint32_t frame){
 	uint32_t check_val = frame & 0xf ; //getting last 4 bits of frameID
 	if(check_val == 0xe) return 1;
 	else return 0;

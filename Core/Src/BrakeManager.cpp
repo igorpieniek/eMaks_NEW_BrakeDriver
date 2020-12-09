@@ -31,6 +31,14 @@ uint8_t BrakeManager::getFrameStatus(uint8_t* data){
 
 
 BrakeManager::BrakeManager() {
+
+}
+
+BrakeManager::~BrakeManager() {
+	// TODO Auto-generated destructor stub
+}
+
+void BrakeManager::init(){
 	direction=DOWN;
 	en = DISABLE;
 	//update limit switches state
@@ -39,13 +47,7 @@ BrakeManager::BrakeManager() {
 //	if 	(min_flag == RESET && max_flag == RESET){ //IDEA
 //		move(DOWN); // back to ZERO state
 //	}
-
 }
-
-BrakeManager::~BrakeManager() {
-	// TODO Auto-generated destructor stub
-}
-
 
 void BrakeManager::on(){
 	update_piston_state();

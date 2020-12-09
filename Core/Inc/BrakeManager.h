@@ -36,6 +36,7 @@ public:
 	};
 	enum  Limit_switch{LOW,HIGH};
 
+	void init();
 
 	void on();
 	void off();

@@ -25,6 +25,7 @@ void AllTasks::init(void){
 
 	  HAL_TIM_Base_Start_IT(&htim3);
 
+	  brake_manager.init();
 	  tools.Init();
 	  futaba.Init();
 	  mode_manager.init();

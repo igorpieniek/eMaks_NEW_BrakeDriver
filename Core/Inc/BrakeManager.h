@@ -48,20 +48,15 @@ public:
 
 private:
 	enum Direction{ DOWN, UP};
-	enum Enable_state{DISABLE, ENABLE};
-
 
 	Limit_switch_flag min_flag;
 	Limit_switch_flag max_flag;
-
-	Enable_state en;
-	Direction direction;
 
 	void stop();
 	void move( Direction dir);
 	void writePins(GPIO_PinState dir, GPIO_PinState enable );
 	Limit_switch_flag getState(Limit_switch);
-	void update_piston_state();
+	void update_switch_flags();
 
 };
 

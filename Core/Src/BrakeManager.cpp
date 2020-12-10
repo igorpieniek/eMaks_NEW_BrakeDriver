@@ -39,10 +39,8 @@ BrakeManager::~BrakeManager() {
 }
 
 void BrakeManager::init(){
-	direction=DOWN;
-	en = DISABLE;
 	//update limit switches state
-	update_piston_state();
+	update_switch_flags();
 
 	//Set to the initial position - min
 	if 	(min_flag == SWITCH_RESET && max_flag == SWITCH_RESET){
@@ -51,46 +49,38 @@ void BrakeManager::init(){
 }
 
 void BrakeManager::on(){
-	update_piston_state();
+	update_switch_flags();
 	if(max_flag == SWITCH_RESET) move(UP);
 	else stop();
 }
 
 void BrakeManager::off(){
-	update_piston_state();
+	update_switch_flags();
 	if(min_flag == SWITCH_RESET) move(DOWN);
 	else stop();
 }
 
 void BrakeManager::interrupt_update(){
-	update_piston_state();
+	update_switch_flags();
 	if (min_flag == SWITCH_SET || max_flag == SWITCH_SET) stop();
 }
 
 void BrakeManager::move(Direction dir){
-	en = ENABLE;
-	if (dir == UP){
-		direction = UP;
-		writePins(DIR_UP_STATE,ENABLE_STATE);
-	}
-	else if(dir==DOWN){
-		direction = DOWN;
-		writePins(DIR_DOWN_STATE,ENABLE_STATE);
-	}
+	if 	   (dir == UP)	writePins(DIR_UP_STATE,		ENABLE_STATE);
+	else if(dir==DOWN)	writePins(DIR_DOWN_STATE,	ENABLE_STATE);
 }
 
 void BrakeManager::stop(){
 	writePins(DIR_UP_STATE, DISABLE_STATE);
-	en = DISABLE ;
 }
 
 void BrakeManager::writePins(GPIO_PinState dir, GPIO_PinState enable ){
 	HAL_GPIO_WritePin(DIRECTION_GPIO_Port, DIRECTION_Pin, dir );
-	HAL_GPIO_WritePin(ENABLE_GPIO_Port, ENABLE_Pin, enable );
+	HAL_GPIO_WritePin(ENABLE_GPIO_Port,    ENABLE_Pin,    enable );
 }
 
 
-void BrakeManager::update_piston_state(){
+void BrakeManager::update_switch_flags(){
 	min_flag = getState(LOW);
 	max_flag = getState(HIGH);
 }

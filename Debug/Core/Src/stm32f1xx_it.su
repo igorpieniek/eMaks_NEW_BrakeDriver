@@ -14,3 +14,4 @@ stm32f1xx_it.c:247:6:USB_LP_CAN1_RX0_IRQHandler	0	static
 stm32f1xx_it.c:233:6:USB_HP_CAN1_TX_IRQHandler	0	static
 stm32f1xx_it.c:275:6:TIM3_IRQHandler	0	static
 stm32f1xx_it.c:289:6:USART2_IRQHandler	0	static
+stm32f1xx_it.c:303:6:EXTI15_10_IRQHandler	0	static

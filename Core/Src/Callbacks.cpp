@@ -24,6 +24,17 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
 	   GPIO_Pin == LIMIT_SWITCH_HIGH_Pin	){
 		brake_manager.interrupt_update();
 	}
+	if(GPIO_Pin ==B1_Pin){
+		static uint8_t counter =0;
+		if(counter ==0){
+			brake_manager.on();
+			counter++;
+		}else{
+			brake_manager.off();
+			counter =0;
+		}
+
+	}
 
 }
 

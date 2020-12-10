@@ -16,7 +16,7 @@
 #define ENABLE_STATE 	GPIO_PIN_SET
 #define DISABLE_STATE 	GPIO_PIN_RESET
 
-#define IS_REVERSED_STATE 0 /** 0 - switch pin SET state mean flag was set
+#define IS_REVERSED_STATE 1 /** 0 - switch pin SET state mean flag was set
  	 	 	 	 	 	 	 	1 - switch pin SET state mean flag was reset*/
 
 #define BRAKE_FRAME_ID 0x19D
@@ -31,8 +31,8 @@ public:
 	uint8_t getFrameStatus(uint8_t* data);
 
 	enum  Limit_switch_flag{
-		RESET ,   /**< flag down - normal state*/
-		SET /**< flag raised - piston reached switch*/
+		SWITCH_RESET ,   /**< flag down - normal state*/
+		SWITCH_SET /**< flag raised - piston reached switch*/
 	};
 	enum  Limit_switch{LOW,HIGH};
 

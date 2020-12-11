@@ -24,17 +24,6 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
 	   GPIO_Pin == LIMIT_SWITCH_HIGH_Pin	){
 		brake_manager.interrupt_update();
 	}
-	if(GPIO_Pin ==B1_Pin){
-		static uint8_t counter =0;
-		if(counter ==0){
-			brake_manager.on();
-			counter++;
-		}else{
-			brake_manager.off();
-			counter =0;
-		}
-
-	}
 
 }
 
@@ -44,14 +33,12 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef* hcan ){
 			&rx.header,
 			rx.data );
 
-	if(brake_manager.isBrakeFrameId(rx.header.StdId) ||
-	   brake_manager.isErrorFrameId(rx.header.StdId)) {
-
-		if (brake_manager.getFrameStatus(rx.data)){
-			brake_manager.on();
-		}
-		else brake_manager.off();
-
+	if(brake_manager.isBrakeFrameId(rx.header.StdId))
+	{
+		if (brake_manager.getFrameStatus(rx.data))	brake_manager.on();
+		else 										brake_manager.off();
 	}
+	else if(brake_manager.isErrorFrameId(rx.header.StdId))	brake_manager.on();
+	else													brake_manager.off();
 
 }

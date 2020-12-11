@@ -42,7 +42,7 @@ void BrakeManager::init(){
 	//update limit switches state
 	update_switch_flags();
 
-	//Set to the initial position - min
+	//Set to the initial position - min if both flag are in reset state
 	if 	(min_flag == SWITCH_RESET && max_flag == SWITCH_RESET){
 		move(DOWN); // back to ZERO state
 	}

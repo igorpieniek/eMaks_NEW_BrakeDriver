@@ -41,11 +41,11 @@ BrakeManager::~BrakeManager() {
 void BrakeManager::init(){
 	//update limit switches state
 	update_switch_flags();
-
+	stop();
 	//Set to the initial position - min if both flag are in reset state
-	if 	(min_flag == SWITCH_RESET && max_flag == SWITCH_RESET){
-		move(DOWN); // back to ZERO state
-	}
+//	if 	(min_flag == SWITCH_RESET && max_flag == SWITCH_RESET){
+//		move(DOWN); // back to ZERO state
+//	}
 }
 
 void BrakeManager::on(){
@@ -76,7 +76,7 @@ void BrakeManager::stop(){
 
 void BrakeManager::writePins(GPIO_PinState dir, GPIO_PinState enable ){
 	HAL_GPIO_WritePin(DIRECTION_GPIO_Port, DIRECTION_Pin, dir );
-	HAL_GPIO_WritePin(ENABLE_GPIO_Port,    ENABLE_Pin,    enable );
+	HAL_GPIO_WritePin(ENABLE_GPIO_Port,    ENABLE_Pin,    enable ); // alternatively PWM signal here
 }
 
 

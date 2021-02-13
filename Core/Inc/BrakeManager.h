@@ -31,8 +31,8 @@ public:
 	uint8_t getFrameStatus(uint8_t* data);
 
 	enum  Limit_switch_flag{
-		SWITCH_RESET ,   /**< flag down - normal state*/
-		SWITCH_SET /**< flag raised - piston reached switch*/
+		SWITCH_RESET ,   	/**< flag down - normal state*/
+		SWITCH_SET 			/**< flag raised - piston reached switch*/
 	};
 	enum  Limit_switch{LOW,HIGH};
 

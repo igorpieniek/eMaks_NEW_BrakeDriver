@@ -35,10 +35,11 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef* hcan ){
 
 	if(brake_manager.isBrakeFrameId(rx.header.StdId))
 	{
-		if (brake_manager.getFrameStatus(rx.data))	brake_manager.on();
-		else 										brake_manager.off();
+		if (brake_manager.getFrameStatus(rx.data))	brake_manager.off();
+		else 										brake_manager.on();
 	}
-	else if(brake_manager.isErrorFrameId(rx.header.StdId))	brake_manager.on();
-	else													brake_manager.off();
+//	else if(brake_manager.isErrorFrameId(rx.header.StdId))
+//		brake_manager.on();
+//	else													brake_manager.off();
 
 }
